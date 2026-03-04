@@ -560,14 +560,12 @@ main_menu() {
 	esac
 }
 
-## Main
-main_menu
-
 # ================== EXECUÇÃO ==================
 intro
 glitch_text "MALDOSO FRAMEWORK"
 glitch_text "Inicializando ambiente"
 spinner
 banner
-dependencies
-start1
+
+# agora sim entra no menu
+main_menu

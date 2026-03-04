@@ -1,22 +1,31 @@
 #!/bin/bash
+# =====================================================
+# MALDOSO FRAMEWORK - DEMO VISUAL
+# Terminal Hacker Aesthetic Framework
+# =====================================================
 
 # ================== CORES ==================
-GREEN="\e[1;92m"
-CYAN="\e[1;96m"
-PURPLE="\e[1;95m"
-YELLOW="\e[1;93m"
-RED="\e[1;91m"
-GRAY="\e[1;90m"
-WHITE="\e[1;97m"
-ORANGE="\e[38;5;208m"
-RESET="\e[0m"
-BOLD="\e[1m"
+GREEN="\033[1;92m"
+CYAN="\033[1;96m"
+PURPLE="\033[1;95m"
+YELLOW="\033[1;93m"
+RED="\033[1;91m"
+GRAY="\033[1;90m"
+WHITE="\033[1;97m"
+RESET="\033[0m"
+BOLD="\033[1m"
+DIM="\033[2m"
 
-# ================== CONFIG ==================
-SITES_DIR=".sites"
-PORT="8080"
+# ================== ÍCONES ==================
+ICON_OK="🟢 ✔"
+ICON_INFO="ℹ️"
+ICON_WAIT="⏳"
+ICON_WARN="⚠️"
+ICON_ERR="❌"
+ICON_CAP="📸 🎯"
+ICON_NET="🌐"
 
-trap 'printf "\n${YELLOW}Encerrando...${RESET}\n"; exit 0' INT
+trap 'printf "\n${YELLOW}${ICON_WARN} Encerrando...${RESET}\n"; exit 0' INT
 
 # ================== UTIL ==================
 separator() {
@@ -28,28 +37,63 @@ timestamp() {
 }
 
 success() {
-  printf "${GRAY}[%s]${RESET} ${GREEN}✔${RESET} %b\n" "$(timestamp)" "$1"
+  printf "${GRAY}[%s]${RESET} ${GREEN}${ICON_OK}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
+}
+
+info() {
+  printf "${GRAY}[%s]${RESET} ${CYAN}${ICON_INFO}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
 }
 
 warn() {
-  printf "${GRAY}[%s]${RESET} ${YELLOW}⚠${RESET} %b\n" "$(timestamp)" "$1"
+  printf "${GRAY}[%s]${RESET} ${YELLOW}${ICON_WARN}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
 }
 
 error() {
-  printf "${GRAY}[%s]${RESET} ${RED}✖${RESET} %b\n" "$(timestamp)" "$1"
+  printf "${GRAY}[%s]${RESET} ${RED}${ICON_ERR}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
+}
+
+# ================== GLITCH ==================
+glitch_text() {
+  final="$1"
+  charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%'
+  length=${#final}
+
+  for _ in {1..6}; do
+    out=""
+    for ((i=0; i<length; i++)); do
+      [[ "${final:$i:1}" == " " ]] && out+=" " || out+=${charset:RANDOM%${#charset}:1}
+    done
+    printf "\r${CYAN}%s${RESET}" "$out"
+    sleep 0.05
+  done
+  printf "\r${GREEN}%s${RESET}\n" "$final"
+}
+
+# ================== SPINNER ==================
+spinner() {
+  local spin='|/-\'
+  for i in {1..24}; do
+    printf "\r${PURPLE}%s${RESET} ${GRAY}Inicializando módulos...${RESET}" "${spin:i%4:1}"
+    sleep 0.07
+  done
+  printf "\r${GREEN}${ICON_OK}${RESET} ${GRAY}Módulos carregados${RESET}\n"
 }
 
 # ================== INTRO ==================
 intro() {
   clear
-  sleep 0.3
+  for _ in {1..3}; do
+    printf "${GREEN}%s${RESET}\n" "$(head /dev/urandom | tr -dc 'A-Z0-9' | head -c $(tput cols))"
+    sleep 0.04
+  done
+  clear
 }
 
 # ================== BANNER ==================
 banner() {
   separator
   printf "${GREEN}${BOLD}"
-  cat << "EOF"
+  cat << EOF
 ███╗   ███╗ █████╗ ██╗     ██████╗  ██████╗ ███████╗ ██████╗
 ████╗ ████║██╔══██╗██║     ██╔══██╗██╔═══██╗██╔════╝██╔═══██╗
 ██╔████╔██║███████║██║     ██║  ██║██║   ██║███████╗██║   ██║
@@ -59,87 +103,43 @@ banner() {
 EOF
   printf "${RESET}"
   separator
-  printf "${GRAY}Servidor Local para Sites HTML${RESET}\n"
+  printf "${GREEN}>> Framework de Engenharia Social & Captura <<${RESET}\n"
+  printf "${GRAY}:: Autor  : Duzinn${RESET}\n"
+  printf "${GRAY}:: Versão : 1.0${RESET}\n"
+  printf "${GRAY}:: Modo   : DEMO${RESET}\n"
   separator
 }
 
-# ================== SERVIDOR ==================
-start_server() {
-
-  site="$1"
-
-  if [ ! -d "$SITES_DIR/$site" ]; then
-    error "Pasta $site não encontrada!"
-    sleep 2
-    return
-  fi
-
+# ================== MENU DEMO ==================
+menu_demo() {
   echo
-  read -p "Escolha a porta (padrão 8080): " custom_port
+  printf "${RED}[${WHITE}01${RED}]${CYAN} Iniciar Demo${RESET}\n"
+  printf "${RED}[${WHITE}00${RED}]${CYAN} Sair${RESET}\n"
+  echo
+  read -p "Escolha: " op
 
-  if [ -n "$custom_port" ]; then
-    PORT="$custom_port"
-  else
-    PORT="8080"
-  fi
-
-  cd "$SITES_DIR/$site" || {
-    error "Erro ao entrar na pasta!"
-    sleep 2
-    return
-  }
-
-  success "Servidor iniciado em http://127.0.0.1:$PORT"
-  sleep 1
-
-  xdg-open "http://127.0.0.1:$PORT" > /dev/null 2>&1 &
-
-  python3 -m http.server "$PORT"
-
-  cd - > /dev/null 2>&1
+  case $op in
+    1|01)
+      success "Demo iniciada"
+      sleep 1
+      ;;
+    0|00)
+      warn "Encerrando framework"
+      sleep 0.8
+      clear
+      exit 0
+      ;;
+    *)
+      error "Opção inválida"
+      sleep 1
+      ;;
+  esac
 }
 
-# ================== MENU ==================
-main_menu() {
-  while true; do
-    { clear; banner; echo; }
-
-    cat <<- EOF
-	${RED}[${WHITE}::${RED}]${ORANGE} selecionar ${RED}[${WHITE}::${RED}]${ORANGE}
-
-	${RED}[${WHITE}01${RED}]${ORANGE} site1
-	${RED}[${WHITE}02${RED}]${ORANGE} site2
-	${RED}[${WHITE}03${RED}]${ORANGE} site3
-	${RED}[${WHITE}04${RED}]${ORANGE} site4
-	${RED}[${WHITE}05${RED}]${ORANGE} site5
-
-	${RED}[${WHITE}99${RED}]${ORANGE} About
-	${RED}[${WHITE}00${RED}]${ORANGE} Exit
-	EOF
-
-    echo
-    read -p "Escolha uma opção: " option
-
-    case $option in
-      1|01) start_server "site1" ;;
-      2|02) start_server "site2" ;;
-      3|03) start_server "site3" ;;
-      4|04) start_server "site4" ;;
-      5|05) start_server "site5" ;;
-      99)
-        echo
-        echo -e "${CYAN}Framework simples para servir sites locais via Python${RESET}"
-        sleep 2
-        ;;
-      0|00) exit 0 ;;
-      *)
-        warn "Opção inválida!"
-        sleep 1
-        ;;
-    esac
-  done
-}
-
-# ================== START ==================
+# ================== EXECUÇÃO ==================
 intro
-main_menu
+glitch_text "MALDOSO FRAMEWORK"
+glitch_text "Inicializando ambiente"
+spinner
+banner
+menu_demo

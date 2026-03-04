@@ -65,6 +65,7 @@ if [[ -e ".server/.cld.log" ]]; then
 fi
 
 trap 'printf "\n${YELLOW}${ICON_WARN} Encerrando...${RESET}\n"; exit 0' INT
+clear
 
 # ================== UTIL ==================
 separator() {
@@ -75,12 +76,30 @@ timestamp() {
   date '+%H:%M:%S'
 }
 
+# === COLE A FUNÇÃO AQUI ===
+log() {
+  printf "${GRAY}[%s]${RESET} ${CYAN}${ICON_INFO}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
+  }
+
+# ================== LOGS COM CHARME ==================
 success() {
   printf "${GRAY}[%s]${RESET} ${GREEN}${ICON_OK}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
 }
 
 info() {
   printf "${GRAY}[%s]${RESET} ${CYAN}${ICON_INFO}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
+}
+
+wait_msg() {
+  printf "${GRAY}[%s]${RESET} ${PURPLE}${ICON_WAIT}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
+}
+
+capture() {
+  printf "${GRAY}[%s]${RESET} ${GREEN}${ICON_CAP}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
+}
+
+server_msg() {
+  printf "${GRAY}[%s]${RESET} ${CYAN}${ICON_NET}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
 }
 
 warn() {
@@ -91,7 +110,7 @@ error() {
   printf "${GRAY}[%s]${RESET} ${RED}${ICON_ERR}${RESET} ${GRAY}%b${RESET}\n" "$(timestamp)" "$1"
 }
 
-# ================== GLITCH ==================
+# ================== EFEITO GLITCH ==================
 glitch_text() {
   final="$1"
   charset='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%'
@@ -132,7 +151,7 @@ intro() {
 banner() {
   separator
   printf "${GREEN}${BOLD}"
-  cat << EOF
+  cat << "EOF"
 ███╗   ███╗ █████╗ ██╗     ██████╗  ██████╗ ███████╗ ██████╗
 ████╗ ████║██╔══██╗██║     ██╔══██╗██╔═══██╗██╔════╝██╔═══██╗
 ██╔████╔██║███████║██║     ██║  ██║██║   ██║███████╗██║   ██║

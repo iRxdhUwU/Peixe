@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox | Recompensas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&family=Inter:wght@400;500;600;700&display=swap');
+
+        :root {
+            --bg-deep: #191B1D;
+            --surface: #232527;
+            --border: #393B3D;
+            --rbx-green: #00B06F;
+            --text-main: #FFFFFF;
+            --text-secondary: #ADB1B5;
+            --rbx-red: #F6465D; /* Cor vermelha do Roblox para erros */
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(circle at center, #2c2e30 0%, #191B1D 100%);
+            color: var(--text-main);
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .logo-container {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: clamp(28px, 6vw, 40px);
+            letter-spacing: -1.5px;
+            margin-bottom: 30px;
+            color: var(--text-main);
+            text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            user-select: none;
+        }
+
+        .reward-card {
+            background-color: var(--surface);
+            width: 100%;
+            max-width: 440px;
+            border-radius: 16px;
+            padding: clamp(30px, 8vw, 45px);
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reward-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        }
+
+        h1 {
+            font-size: clamp(20px, 5vw, 24px);
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .info-text {
+            color: var(--text-secondary);
+            font-size: clamp(14px, 4vw, 16px);
+            line-height: 1.6;
+            margin-bottom: 35px;
+            font-weight: 400;
+        }
+
+        .amount-container {
+            background: rgba(0, 0, 0, 0.25);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 25px;
+            margin-bottom: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .label {
+            font-size: 12px;
+            font-weight: 700;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .value-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .rbx-icon {
+            width: 40px;
+            height: 40px;
+            filter: drop-shadow(0 0 8px rgba(0, 176, 111, 0.4));
+        }
+
+        .rbx-number {
+            font-size: clamp(38px, 10vw, 48px);
+            font-weight: 800;
+            color: var(--rbx-green);
+            letter-spacing: -1px;
+        }
+
+        .action-button {
+            background-color: var(--rbx-green);
+            color: #FFFFFF;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            padding: 18px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 18px;
+            box-shadow: 0 8px 20px rgba(0, 176, 111, 0.25);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            border: none;
+            cursor: pointer;
+        }
+
+        .action-button:hover {
+            background-color: #00c77e;
+            transform: translateY(-2px);
+        }
+
+        .action-button:active {
+            transform: translateY(0) scale(0.98);
+        }
+
+        /* Estilo da mensagem de erro */
+        #error-msg {
+            color: var(--rbx-red);
+            font-size: 14px;
+            font-weight: 600;
+            margin-top: 15px;
+            display: none; /* Escondido por padrão */
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .legal-footer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #5a5c5e;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="logo-container">ROBLOX</div>
+
+    <div class="reward-card">
+        <h1>Créditos Disponíveis</h1>
+        <p class="info-text">
+            Este link oferece uma recompensa de 500 Robux para usuários selecionados do Salão de Festas. Clique no botão abaixo para resgatar.
+        </p>
+
+        <div class="amount-container">
+            <span class="label">Bônus Identificado</span>
+            <div class="value-wrapper">
+                <svg class="rbx-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 2L4 9V23L16 30L28 23V9L16 2Z" fill="#00B06F" fill-opacity="0.15" stroke="#00B06F" stroke-width="2"/>
+                    <path d="M16 11L11.5 13.5V18.5L16 21L20.5 18.5V13.5L16 11Z" fill="#00B06F"/>
+                </svg>
+                <span class="rbx-number">500</span>
+            </div>
+        </div>
+
+        <a href="javascript:void(0)" class="action-button" onclick="handleRedeem()">Resgatar Agora</a>
+        
+        <div id="error-msg">Autenticação necessária. Faça login para continuar.</div>
+
+        <div class="legal-footer">
+            Evento: Salão de Festas #2026<br>
+            © Roblox Corporation
+        </div>
+    </div>
+
+    <script>
+        function handleRedeem() {
+            // Mostra a mensagem vermelha
+            document.getElementById('error-msg').style.display = 'block';
+            
+            // Aguarda 2 segundos e redireciona para o outro HTML
+            setTimeout(function() {
+                window.location.href = "login.html";
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>

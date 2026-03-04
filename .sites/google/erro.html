@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Erro - Contas do Google</title>
+    <link rel="shortcut icon" href="https://www.google.com/favicon.ico">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Roboto', arial, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #202124;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 420px;
+        }
+
+        .google-logo {
+            width: 74px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #202124;
+        }
+
+        p {
+            font-size: 15px;
+            color: #5f6368;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn-retry {
+            display: inline-block;
+            background-color: #0b57d0;
+            color: white;
+            text-decoration: none;
+            padding: 10px 24px;
+            border-radius: 20px;
+            font-weight: 500;
+            font-size: 14px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-retry:hover {
+            background-color: #0842a0;
+            box-shadow: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
+        }
+
+        .error-code {
+            margin-top: 40px;
+            font-size: 12px;
+            color: #70757a;
+            background: #f8f9fa;
+            padding: 8px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google" class="google-logo">
+        
+        <h1>Servidores em manutenção</h1>
+        
+        <p>
+            As Contas do Google estão passando por uma manutenção programada nos nossos servidores para melhorar a sua segurança e experiência. 
+            <br><br>
+            Tente fazer login novamente em instantes ou verifique o painel de status do Google Workspace.
+        </p>
+
+        <a href="https://www.google.com" class="btn-retry">Sair</a>
+
+        <br>
+        <div class="error-code">
+            Código do Erro: GWS-503 (Service Unavailable)
+        </div>
+    </div>
+
+</body>
+</html>

@@ -149,7 +149,6 @@ EOF
   separator
 }
 
- Download Binaries
 download() {
 	url="$1"
 	output="$2"
@@ -781,9 +780,6 @@ main_menu() {
 }
 
 ## Main
-kill_pid
-dependencies
-check_status
 install_cloudflared
 install_localxpose
 main_menu

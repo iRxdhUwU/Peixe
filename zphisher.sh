@@ -539,7 +539,7 @@ main_menu() {
 		${RED}[${WHITE}03${RED}]${ORANGE} Google
 		${RED}[${WHITE}35${RED}]${ORANGE} Roblox
 
-		${RED}[${WHITE}99${RED}]${ORANGE} About         ${RED}[${WHITE}00${RED}]${ORANGE} Exit
+		${ORANGE} Ctrl + C Exit
 
 	EOF
 	
@@ -556,13 +556,6 @@ main_menu() {
 			website="roblox"
 			mask='https://get-free-robux'
 			tunnel_menu;;
-		99)
-			about;;
-		0 | 00 )
-			msg_exit;;
-		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
-			{ sleep 1; main_menu; };;
 	
 	esac
 }

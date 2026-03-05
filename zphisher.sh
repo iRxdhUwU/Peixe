@@ -403,7 +403,7 @@ custom_url() {
 site_facebook() {
 	cat <<- EOF
 
-		printf "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
+		printf "%b" "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
 
 	EOF
 
@@ -436,7 +436,7 @@ site_facebook() {
 site_instagram() {
 	cat <<- EOF
 
-		printf "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
+		printf "%b" "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
 
 	EOF
 
@@ -469,7 +469,7 @@ site_instagram() {
 site_gmail() {
 	cat <<- EOF
 
-		printf "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
+		printf "%b" "${PURPLE}┃${RESET} ${GREEN}${BOLD}➤ [01]${RESET} ${WHITE}${BOLD}Página Tradicional De Login${RESET}\n"
 
 	EOF
 

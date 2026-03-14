@@ -537,6 +537,7 @@ glitch_text "MALDOSO FRAMEWORK"
 glitch_text "Inicializando ambiente"
 spinner
 banner
+banner_small
 
 # agora sim entra no menu
 main_menu

